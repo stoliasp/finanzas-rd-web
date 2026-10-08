@@ -17,8 +17,11 @@
     .icono { font-size: 56px; line-height: 1; }
     h1 { font-size: 24px; margin: 16px 0 8px; }
     p { color: var(--suave); line-height: 1.5; margin: 8px 0; }
-    .pasos { text-align: left; background: var(--fondo); border-radius: 16px; padding: 16px 20px; margin: 20px 0 8px; }
-    .pasos li { margin: 6px 0; color: var(--texto); }
+    /* La lista queda completa dentro del cuadro: los números no se salen. */
+    .pasos { text-align: left; background: var(--fondo); border-radius: 16px; margin: 20px 0 8px;
+      padding: 16px 20px 16px 44px; list-style-position: outside; }
+    .pasos li { margin: 8px 0; padding-left: 4px; color: var(--texto); line-height: 1.45; }
+    .tarjeta { overflow-wrap: anywhere; }
     .error { display: none; }
     .error .icono { color: #e5484d; }
     small { color: var(--suave); display: block; margin-top: 16px; }
