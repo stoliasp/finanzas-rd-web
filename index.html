@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cuenta confirmada</title>
+  <style>
+    :root { --fondo: #f4f6fb; --tarjeta: #ffffff; --texto: #11181c; --suave: #60646c; --azul: #3c87f7; --verde: #30a46c; }
+    @media (prefers-color-scheme: dark) {
+      :root { --fondo: #0b0d10; --tarjeta: #1c1f24; --texto: #edeef0; --suave: #9ba1a6; }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: var(--fondo); color: var(--texto); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding: 16px; }
+    .tarjeta { background: var(--tarjeta); max-width: 420px; width: 100%; border-radius: 24px; padding: 32px 24px; text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+    .icono { font-size: 56px; line-height: 1; }
+    h1 { font-size: 24px; margin: 16px 0 8px; }
+    p { color: var(--suave); line-height: 1.5; margin: 8px 0; }
+    .pasos { text-align: left; background: var(--fondo); border-radius: 16px; padding: 16px 20px; margin: 20px 0 8px; }
+    .pasos li { margin: 6px 0; color: var(--texto); }
+    .error { display: none; }
+    .error .icono { color: #e5484d; }
+    small { color: var(--suave); display: block; margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <main class="tarjeta" id="ok">
+    <div class="icono">✅</div>
+    <h1>¡Tu cuenta está confirmada!</h1>
+    <p>Ya puedes usar la app de finanzas.</p>
+    <ol class="pasos">
+      <li>Vuelve a la app en tu teléfono.</li>
+      <li>Toca <strong>Iniciar sesión</strong>.</li>
+      <li>Entra con tu correo y la contraseña que creaste.</li>
+    </ol>
+    <small>Ya puedes cerrar esta página.</small>
+  </main>
+  <main class="tarjeta error" id="error">
+    <div class="icono">⚠️</div>
+    <h1>El enlace ya no sirve</h1>
+    <p>Puede que haya vencido o que ya lo hayas usado. Si ya confirmaste tu cuenta, solo inicia sesión en la app. Si no, vuelve a crear la cuenta para recibir un enlace nuevo.</p>
+  </main>
+  <script>
+    // Si el enlace venció, Supabase lo indica en la dirección (#error=...).
+    if (location.hash.indexOf('error') !== -1 || location.search.indexOf('error') !== -1) {
+      document.getElementById('ok').style.display = 'none';
+      document.getElementById('error').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
